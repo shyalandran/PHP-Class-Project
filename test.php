@@ -2,6 +2,7 @@
 
 <?php
     include "libs/load.php";
+
     // print("globle");
     // print_r($GLOBALS);
     // print("SERVER:-");
@@ -14,13 +15,15 @@
     // print_r($_GET);
     // print("file");
     // print_r($_FILES)
-    if(signup("shylu1", "12345", "shylu1@test.com", "11223355")) {
-        echo "successfully" ;
-    } else {
-        echo "faild" ;
-    }
+    // if(signup("shylu1", "12345", "shylu1@test.com", "11223355")) {
+    //     echo "successfully" ;
+    // } else {
+    //     echo "faild" ;
+    // }
         
-    
+    $conn = Database::getConnection();
+    $conn =Database::getConnection();
+    $conn =Database::getConnection();$conn =Database::getConnection();$conn =Database::getConnection();
     
 ?>
 
