@@ -29,7 +29,7 @@ if($signup) {
            </div>
        </main>
 <?php }    
-} else {?>
+} else { ?>
 
 <main class="form-signup w-100 m-auto">
     <form method="post" action="signup.php">
