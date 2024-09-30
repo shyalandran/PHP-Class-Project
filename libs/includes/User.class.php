@@ -4,7 +4,10 @@ class User {
     private $conn;
 
     public static function signup($username, $password, $email, $phone) {
-        $password = md5($password);
+        $options = [
+            'cost' => 7,
+        ];
+        $password = password_hash($password,PASSWORD_BCRYPT, $options);
         $conn = Database::getConnection();
         // Assuming $username, $password, $email, $phone are defined elsewhere
         
@@ -25,13 +28,12 @@ class User {
     }
 
     public static function login($username, $password) {
-        $password = md5($password);
         $sql = "SELECT * FROM `auth` WHERE `username` = '$username'";
         $conn = Database::getConnection();
         $result = $conn->query($sql);
         if ($result->num_rows == 1) { 
             $row = $result->fetch_assoc();
-            if ($row["password"] == $password) {
+            if ( password_verify($password, $row["password"])) {
                 return $row;
             } else {
                 return false;
@@ -39,9 +41,6 @@ class User {
         } else { 
             echo "error";
         }
-
-        
-
     }
 
     public function __construct($username)
